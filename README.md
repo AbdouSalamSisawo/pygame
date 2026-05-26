@@ -2,12 +2,14 @@
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org)
 [![License](https://img.shields.io/github/license/AbdouSalamSisawo/pygame)](LICENSE)
-[![GitHub Workflow Status](https://github.com/AbdouSalamSisawo/pygame/actions/workflows/ci.yml/badge.svg)](https://github.com/AbdouSalamSisawo/pygame/actions)
+[![CI](https://img.shields.io/badge/CI-not%20configured-lightgrey)](https://github.com/AbdouSalamSisawo/pygame/actions)
 [![Last commit](https://img.shields.io/github/last-commit/AbdouSalamSisawo/pygame)](https://github.com/AbdouSalamSisawo/pygame/commits)
 [![Issues](https://img.shields.io/github/issues/AbdouSalamSisawo/pygame)](https://github.com/AbdouSalamSisawo/pygame/issues)
 [![Release](https://img.shields.io/github/v/release/AbdouSalamSisawo/pygame?sort=semver)](https://github.com/AbdouSalamSisawo/pygame/releases)
 
 Word Explorer is a small Python/Pygame literacy game for early learners. It focuses on simple word recognition, picture-word matching, and gentle adaptive feedback so repeated mistakes become more guided instead of more punishing.
+
+Note: CI is not configured for this repository yet. To enable the build badge, add a workflow at `.github/workflows/ci.yml` (see the "Contributing & Roadmap" section for a suggested minimal workflow). I can scaffold that workflow and open a PR if you'd like.
 
 ## Current Status
 The project is playable end to end in its current form.
