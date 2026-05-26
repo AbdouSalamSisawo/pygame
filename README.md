@@ -9,8 +9,6 @@
 
 Word Explorer is a small Python/Pygame literacy game for early learners. It focuses on simple word recognition, picture-word matching, and gentle adaptive feedback so repeated mistakes become more guided instead of more punishing.
 
-Note: CI is not configured for this repository yet. To enable the build badge, add a workflow at `.github/workflows/ci.yml` (see the "Contributing & Roadmap" section for a suggested minimal workflow). I can scaffold that workflow and open a PR if you'd like.
-
 ## Current Status
 The project is playable end to end in its current form.
 
