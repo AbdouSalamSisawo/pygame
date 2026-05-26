@@ -150,7 +150,7 @@ class VoiceInput:
         def callback(indata, frames, time_info, status):
             if status:
                 return
-            audio_queue.put(indata.tobytes())
+            audio_queue.put(bytes(indata))
 
         try:
             with self.sd.RawInputStream(

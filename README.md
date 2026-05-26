@@ -6,7 +6,7 @@
 - **Project Type:** Group Project
 - **Weightage:** 15%
 - **Submission Date:** 25 June 2026 (via eLearning)
-- **Prepared by:** Syaza Lyana Mahadzir
+- **Prepared by:** Mdm. Syaza Lyana Mahadzir
 
 ## Course Learning Outcome (CLO)
 Develop intelligent systems to solve computational problems (P5, PLO6).
@@ -73,7 +73,7 @@ The game tracks performance per word and adapts dynamically:
 
 ## Voice User Interface (Optional)
 This project includes **offline voice input/output**:
-- **Speech-to-Text (STT):** Vosk (offline)
+- **Speech-to-Text (STT):** Vosk (offline, local model download)
 - **Text-to-Speech (TTS):** pyttsx3
 
 ### Voice Input
@@ -98,6 +98,7 @@ In **Settings**, you can:
 - Adjust voice volume
 
 > Note: The Vosk speech model downloads automatically on first use and is cached locally in `data/`.
+> Online STT is **not** integrated yet; it requires an API key and a provider integration.
 
 ## Project Structure
 ```
@@ -137,3 +138,37 @@ The scoring system is **non-punitive**:
 - Incorrect answers trigger hints, not penalties
 
 ## Demo Vocabulary
+The demo dataset is intentionally small and child-friendly:
+- **Nature:** sun, moon, leaf, tree
+- **Toys:** ball, kite
+- **Animals:** fish, bird
+- **Food/School/Transport/Clothes:** apple, book, car, hat
+
+## Settings & Persistence
+- **Settings** are stored in `data/progress.json`
+- Includes sound volume, difficulty bias, voice input/output toggles, and voice volume
+- Progress stats track correct/incorrect answers and recent sessions
+
+## Error Handling & Fallbacks
+- Voice input is optional and gracefully disabled if dependencies or microphone are unavailable
+- If speech is not detected within the timeout, the game shows a friendly message and continues
+- All core gameplay remains fully functional without voice features
+
+## Testing Checklist (Manual)
+1. Launch app and navigate all menu items.
+2. Complete a game session and return home.
+3. Verify hints and adaptive behavior after repeated mistakes.
+4. Toggle voice input/output and confirm feedback.
+5. Confirm progress is saved after exit and restored on restart.
+
+## YouTube Video Presentation Guidelines
+1. **Length:** 5–10 minutes.
+2. **Upload:** Public or Unlisted; paste active link in eLearning submission.
+3. **All members must present:** each person speaks and explains their contribution.
+4. **Content must include:**
+   - Introduction of group members and objectives
+   - Technical architecture walkthrough
+   - Live runtime demo showing instructions, scoring, and AI adaptation
+
+## Acknowledgements
+This project was built for CCC1243 Artificial Intelligence and aligns with the course learning outcomes and project requirements.

@@ -26,10 +26,10 @@
       "last_seen": 1779548297.3234107
     },
     "bird": {
-      "correct": 8,
+      "correct": 9,
       "wrong": 1,
-      "streak": 8,
-      "last_seen": 1779549068.4693923
+      "streak": 9,
+      "last_seen": 1779818752.2719982
     },
     "frog": {
       "correct": 0,
@@ -38,22 +38,22 @@
       "last_seen": 0
     },
     "sun": {
-      "correct": 8,
+      "correct": 9,
       "wrong": 1,
-      "streak": 7,
-      "last_seen": 1779549052.6210732
+      "streak": 8,
+      "last_seen": 1779818781.0396225
     },
     "moon": {
-      "correct": 6,
+      "correct": 7,
       "wrong": 1,
-      "streak": 6,
-      "last_seen": 1779548665.282756
+      "streak": 7,
+      "last_seen": 1779818777.8719962
     },
     "leaf": {
-      "correct": 4,
+      "correct": 5,
       "wrong": 0,
-      "streak": 4,
-      "last_seen": 1779548304.4501889
+      "streak": 5,
+      "last_seen": 1779818744.695456
     },
     "tree": {
       "correct": 6,
@@ -74,10 +74,10 @@
       "last_seen": 1779549095.6545722
     },
     "kite": {
-      "correct": 3,
+      "correct": 5,
       "wrong": 0,
-      "streak": 3,
-      "last_seen": 1779545774.1862514
+      "streak": 5,
+      "last_seen": 1779818785.7164109
     },
     "doll": {
       "correct": 0,
@@ -98,10 +98,10 @@
       "last_seen": 0
     },
     "hat": {
-      "correct": 8,
+      "correct": 10,
       "wrong": 1,
-      "streak": 7,
-      "last_seen": 1779549079.9988103
+      "streak": 9,
+      "last_seen": 1779818750.3843887
     },
     "shoe": {
       "correct": 1,
@@ -128,10 +128,10 @@
       "last_seen": 1779539667.371477
     },
     "apple": {
-      "correct": 4,
+      "correct": 5,
       "wrong": 0,
-      "streak": 4,
-      "last_seen": 1779548649.027841
+      "streak": 5,
+      "last_seen": 1779818754.999317
     },
     "milk": {
       "correct": 0,
@@ -158,16 +158,16 @@
       "last_seen": 1779549076.092505
     },
     "car": {
-      "correct": 4,
+      "correct": 5,
       "wrong": 0,
-      "streak": 4,
-      "last_seen": 1779548651.3446953
+      "streak": 5,
+      "last_seen": 1779818787.5818481
     }
   },
   "totals": {
-    "correct": 72,
+    "correct": 82,
     "wrong": 8,
-    "stars": 14
+    "stars": 16
   },
   "sessions": [
     {
@@ -205,7 +205,13 @@
       "duration": 58,
       "correct": 10,
       "wrong": 0
+    },
+    {
+      "timestamp": 1779818787.5828817,
+      "duration": 48,
+      "correct": 10,
+      "wrong": 0
     }
   ],
-  "last_saved": 1779549280.3906348
+  "last_saved": 1779818792.3857806
 }

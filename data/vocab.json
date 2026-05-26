@@ -1,0 +1,14 @@
+[
+  {"word": "sun", "category": "nature", "color": "#F6C453", "icon": "sun"},
+  {"word": "moon", "category": "nature", "color": "#A5B4FC", "icon": "moon"},
+  {"word": "leaf", "category": "nature", "color": "#7BC96F", "icon": "leaf"},
+  {"word": "tree", "category": "nature", "color": "#59C16C", "icon": "tree"},
+  {"word": "ball", "category": "toys", "color": "#FF7A7A", "icon": "ball"},
+  {"word": "kite", "category": "toys", "color": "#FF9F68", "icon": "kite"},
+  {"word": "fish", "category": "animals", "color": "#6EC6FF", "icon": "fish"},
+  {"word": "bird", "category": "animals", "color": "#FFB74D", "icon": "bird"},
+  {"word": "apple", "category": "food", "color": "#F87171", "icon": "apple"},
+  {"word": "book", "category": "school", "color": "#60A5FA", "icon": "book"},
+  {"word": "car", "category": "transport", "color": "#34D399", "icon": "car"},
+  {"word": "hat", "category": "clothes", "color": "#FBBF24", "icon": "hat"}
+]
