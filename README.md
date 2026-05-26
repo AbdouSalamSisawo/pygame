@@ -1,171 +1,172 @@
-# Adaptive AI-Driven Educational Game for Early Childhood Literacy
+# Word Explorer
 
-## Course Information
-- **Institution:** School of Computing and Informatics, Albukhary International University
-- **Course Code:** CCC1243 Artificial Intelligence
-- **Project Type:** Group Project
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org)
+[![License](https://img.shields.io/github/license/AbdouSalamSisawo/pygame)](LICENSE)
+[![GitHub Workflow Status](https://github.com/AbdouSalamSisawo/pygame/actions/workflows/ci.yml/badge.svg)](https://github.com/AbdouSalamSisawo/pygame/actions)
+[![Last commit](https://img.shields.io/github/last-commit/AbdouSalamSisawo/pygame)](https://github.com/AbdouSalamSisawo/pygame/commits)
+[![Issues](https://img.shields.io/github/issues/AbdouSalamSisawo/pygame)](https://github.com/AbdouSalamSisawo/pygame/issues)
+[![Release](https://img.shields.io/github/v/release/AbdouSalamSisawo/pygame?sort=semver)](https://github.com/AbdouSalamSisawo/pygame/releases)
 
-## Course Learning Outcome (CLO)
-Develop intelligent systems to solve computational problems (P5, PLO6).
+Word Explorer is a small Python/Pygame literacy game for early learners. It focuses on simple word recognition, picture-word matching, and gentle adaptive feedback so repeated mistakes become more guided instead of more punishing.
 
-## Project Overview
-Early childhood learners (ages 4–6) have unique cognitive, physical, and literacy needs. Static software often fails to adapt to repeated mistakes, short attention spans, and emerging language skills. This project delivers a **child-friendly, adaptive educational game** built in Python to help young learners develop literacy skills. The game demonstrates **AI-driven adaptation** by tracking behavior, adjusting difficulty, and providing contextual hints and encouragement.
+## Current Status
+The project is playable end to end in its current form.
 
-## Educational Focus
-This implementation focuses on **Vocabulary Learning**:
-- Recognize words
-- Associate words with images
-- Understand pronunciation (via optional TTS)
-- Build memory and literacy familiarity
+- Main menu, instructions, settings, and game scenes are implemented.
+- The game supports mouse input and keyboard navigation.
+- Rounds alternate between picture-to-word and word-to-picture matching.
+- The adaptive tracker reduces pressure on difficult words by changing option count and hint behavior.
+- Progress is saved locally, including settings, totals, word stats, and recent sessions.
+- Optional voice input and voice output are supported when the extra dependencies are installed.
 
-## Key Features
-- **Bright, clean, visual UI** with large buttons and minimal text
-- **Instruction screen** for self-guided learning
-- **Two activity types**: image-to-word and word-to-image matching
-- **Adaptive AI** that tracks mistakes and adapts difficulty and hints
-- **Non-punitive scoring** with progress stars
-- **Audio feedback** for correct/incorrect responses
-- **Progress persistence** (settings and learning stats)
-- **Optional Voice User Interface (VUI)** using offline STT/TTS
+## Features
+- Friendly, child-oriented UI with large buttons and simple layouts.
+- Vocabulary-based matching gameplay with colored icon cards.
+- Non-punitive scoring with stars and positive feedback.
+- Difficulty bias settings: easy, normal, and hard.
+- Offline voice output with pyttsx3.
+- Offline voice input with Vosk and sounddevice.
 
-## System Requirements
-- **Python:** 3.10+ recommended (3.12 tested)
-- **OS:** Windows 10/11 recommended
-- **Audio:** Speakers and microphone (for VUI)
-- **Dependencies:** listed in `requirements.txt`
-
-## Installation
-```bash
-pip install -r requirements.txt
-```
-
-## Run the Game
-```bash
-python main.py
-```
-
-## Controls
-- **Mouse:** Click/tap to select answers and buttons
-- **Keyboard:**
-  - Left / Right arrows: move selection
-  - Enter / Space: confirm selection
-  - Esc: return to main menu
-
-## Gameplay Flow
-1. **Main Menu**: Start Game, Instructions, Settings, Exit
-2. **Instructions**: Simple, kid-friendly how-to-play
-3. **Game**:
-   - Match pictures to words or words to pictures
-   - Receive immediate feedback
-   - Earn stars for progress
-4. **Session Complete**:
-   - Play again or return home
-
-## Adaptive Intelligence (AI)
-The game tracks performance per word and adapts dynamically:
-- Reduces options after repeated mistakes
-- Highlights correct answers as hints
-- Reinforces difficult words more often
-- Provides positive, encouraging feedback
-
-## Voice User Interface (Optional)
-This project includes **offline voice input/output**:
-- **Speech-to-Text (STT):** Vosk (offline, local model download)
-- **Text-to-Speech (TTS):** pyttsx3
-
-### Voice Input
-- Tap **Mic** during gameplay
-- Speak a visible word (e.g., "sun", "book", "hat")
-- The game selects and grades the matching option
-- Voice commands:
-  - "menu", "home", "exit": return to main menu
-  - "repeat": repeat the current prompt
-
-### Voice Output
-The game can speak:
-- Instructions
-- Prompts and hints
-- Correct/incorrect feedback
-- Encouragement at session end
-
-### Voice Settings
-In **Settings**, you can:
-- Enable/disable voice input
-- Enable/disable voice output
-- Adjust voice volume
-
-> Note: The Vosk speech model downloads automatically on first use and is cached locally in `data/`.
-> Online STT is **not** integrated yet; it requires an API key and a provider integration.
-
-## Project Structure
-```
+## Project Layout
+```text
 d:\pygame
-├── main.py                 # App entry point
-├── config.py               # Global settings and colors
-├── scene.py                # Scene manager
-├── ui.py                   # UI helpers and components
-├── assets.py               # Placeholder icon rendering
-├── audio.py                # Sound effects
-├── voice.py                # VUI (offline STT/TTS)
+├── main.py
+├── config.py
+├── scene.py
+├── ui.py
+├── assets.py
+├── audio.py
+├── voice.py
+├── README.md
+├── requirements.txt
+├── screenshots/
 ├── data/
-│   └── vocab.json          # Demo vocabulary dataset
-├── gameplay/
-│   └── rounds.py           # Round generation logic
+│   ├── vocab.json
+│   └── vosk-model-small-en-us-0.15/
 ├── ai/
-│   └── adaptive.py         # Adaptive tracker
+│   └── adaptive.py
+├── gameplay/
+│   └── rounds.py
 ├── screens/
 │   ├── menu.py
 │   ├── instructions.py
 │   ├── settings.py
 │   └── game.py
 └── storage/
-    └── progress.py         # Save/load progress
+    └── progress.py
 ```
 
-## UI/UX Design
-- Minimal text, high visual clarity
-- Large interactive elements
-- Consistent spacing and clean panels
-- Friendly, encouraging messaging
+## How It Works
+`main.py` loads the vocabulary, saved progress, audio, and voice systems, then starts the menu scene.
 
-## Scoring
-The scoring system is **non-punitive**:
-- Correct answers increase score
-- Stars represent progress
-- Incorrect answers trigger hints, not penalties
+The gameplay loop in `screens/game.py` runs a 10-round session. Each round is built by `gameplay/rounds.py` and uses `ai/adaptive.py` to choose the target word and control how many options are shown. Correct answers increase the score and stars. Incorrect answers trigger hints and make the next rounds easier for that word.
 
-## Demo Vocabulary
-The demo dataset is intentionally small and child-friendly:
-- **Nature:** sun, moon, leaf, tree
-- **Toys:** ball, kite
-- **Animals:** fish, bird
-- **Food/School/Transport/Clothes:** apple, book, car, hat
+## Controls
+- Mouse: click buttons, cards, and menu items.
+- Keyboard: left/right to move between options, Enter or Space to confirm, Esc to return to the menu.
+- Voice input: press Mic during gameplay and say a visible word or a command like menu, home, exit, or repeat.
 
-## Settings & Persistence
-- **Settings** are stored in `data/progress.json`
-- Includes sound volume, difficulty bias, voice input/output toggles, and voice volume
-- Progress stats track correct/incorrect answers and recent sessions
+## Settings And Save Data
+Settings are managed from the Settings screen and stored locally in `data/progress.json`.
 
-## Error Handling & Fallbacks
-- Voice input is optional and gracefully disabled if dependencies or microphone are unavailable
-- If speech is not detected within the timeout, the game shows a friendly message and continues
-- All core gameplay remains fully functional without voice features
+Saved data includes:
+- sound volume
+- voice input toggle
+- voice output toggle
+- voice volume
+- difficulty bias
+- per-word stats
+- total correct, wrong, and stars
+- recent session summaries
 
-## Testing Checklist (Manual)
-1. Launch app and navigate all menu items.
-2. Complete a game session and return home.
-3. Verify hints and adaptive behavior after repeated mistakes.
-4. Toggle voice input/output and confirm feedback.
-5. Confirm progress is saved after exit and restored on restart.
+The progress file is generated locally and should not be committed. The Vosk speech model is downloaded on first use and cached in `data/`.
 
-## YouTube Video Presentation Guidelines
-1. **Length:** 5–10 minutes.
-2. **Upload:** Public or Unlisted; paste active link in eLearning submission.
-3. **All members must present:** each person speaks and explains their contribution.
-4. **Content must include:**
-   - Introduction of group members and objectives
-   - Technical architecture walkthrough
-   - Live runtime demo showing instructions, scoring, and AI adaptation
+## Installation
+```bash
+pip install -r requirements.txt
+```
+
+## Run
+```bash
+python main.py
+```
+
+## Requirements
+- Python 3.10 or newer is recommended.
+- Windows is the primary tested platform.
+- Voice features require microphone access and the optional packages in `requirements.txt`.
+
+## Vocabulary Set
+The demo vocabulary is intentionally small and child-friendly.
+
+- Nature: sun, moon, leaf, tree
+- Toys: ball, kite
+- Animals: fish, bird
+- Food and school: apple, book
+- Transport and clothes: car, hat
+
+## Notes
+- If voice input is unavailable, the game still works normally.
+- If the speech model is not ready yet, the app shows a status message and continues.
+- The app is designed to fail gracefully when optional audio or microphone dependencies are missing.
+
+## Known issues (for contributors)
+1) KeyError in choice evaluation
+
+Observed failure (example):
+```text
+self.evaluate_choice(option["item"])
+                         ~~~~~~^^^^^^^^
+KeyError: 'item'
+```
+What this means: some entries in the option layout are missing the expected `item` key when the game calls `evaluate_choice()`.
+Suggested steps to investigate and fix:
+- Reproduce the failure and add logging around `compute_option_layout()` and where `option_layout` is used to confirm each element's keys.
+- Check `gameplay/rounds.py` and `screens/game.py::compute_option_layout()` to ensure `item` is always added and not removed by later processing.
+- Guard `evaluate_choice()` with a safe lookup (e.g., `option.get('item')`) and log a detailed error rather than crashing.
+- Add unit tests that build round states with corner cases (zero options, eliminated indices) to prevent regressions.
+
+2) Voice assistant unreliable / not working
+
+Symptoms: voice input may report "Voice input not installed" or fail during recognition; `VoiceManager` may show status messages but not deliver expected text to the game.
+Quick checks:
+- Confirm optional dependencies are installed (`vosk`, `sounddevice`, `pyttsx3`) and the Vosk model exists in `data/`.
+- Check microphone permissions on the host platform and that the sample rate/format expected by `sounddevice` is available.
+- Watch the `VoiceInput._set_status()` messages and `voice.status` used in the UI for clues.
+
+Possible improvements / alternatives for contributors:
+- Improve Vosk robustness: pre-download the model (the code supports this), validate `MODEL_DIR`, and add clearer error messages when model loading fails.
+- Use a different STT backend if Vosk proves unreliable: options include OpenAI Whisper (local or API), Google Cloud Speech-to-Text, or Microsoft Azure Speech. Each has trade-offs (offline vs. cloud, cost, accuracy). For example, `whisper` (local) can run offline and often gives robust transcriptions but requires GPU or more CPU.
+- For a cloud-backed approach, wrap calls with retries and graceful fallbacks to keyboard input when network or quota fails.
+- Add automated integration tests or a small debug route that records a short audio clip and runs recognition locally to verify the audio pipeline.
+
+Please note: per project request, this README documents the issue but does not attempt an automatic code fix. Contributors should follow the diagnostic steps above and open a PR with tests.
 
 ## Acknowledgements
-This project was built for CCC1243 Artificial Intelligence and aligns with the course learning outcomes and project requirements.
+Built for CCC1243 Artificial Intelligence as an adaptive literacy game prototype.
+
+---
+
+## Screenshots
+The repository includes example screenshots under the `screenshots/` folder. These images illustrate core parts of the application and are referenced here so readers can quickly understand the UI and flow.
+
+- Main menu: [screenshots/01-home-menu.png](screenshots/01-home-menu.png) — app title, subtitle, and navigation buttons (Start, Instructions, Settings, Exit).
+- Instructions: [screenshots/02-instructions.png](screenshots/02-instructions.png) — the how-to-play panel with short, child-friendly directions.
+- Game round: [screenshots/03-game-round.png](screenshots/03-game-round.png) — an active round showing the prompt, option cards/buttons, current score and stars.
+- Hint state: [screenshots/04-hint-state.png](screenshots/04-hint-state.png) — after a wrong answer, a hint and eliminated options are visible.
+- Settings: [screenshots/05-settings.png](screenshots/05-settings.png) — volume, voice toggles, voice volume, difficulty bias, and reset controls.
+- Session complete: [screenshots/06-session-complete.png](screenshots/06-session-complete.png) — end-of-session summary with Play Again / Return Home options.
+
+These images are intended for documentation only. If you publish this repository, avoid committing personal or large binary files beyond these illustrative screenshots.
+
+## Polished Overview (quick)
+Word Explorer is a compact, pedagogical game built with Python and Pygame to practice early vocabulary. It ships with a curated demo word set and simple adaptive logic that increases exposure to words the learner struggles with.
+
+- Platform: Python 3.10+ (Windows tested)
+- UI: Pygame, keyboard + mouse controls; optional offline voice input/output
+- Persistence: Local JSON save at `data/progress.json` (do not commit)
+
+### Professional notes for contributors
+- Keep the `data/vocab.json` dataset curated and small for quick sessions.
+- Treat `data/progress.json` and any downloaded `vosk-model-*` directories as local-only artifacts; they are in `.gitignore` and should not be committed.
+- When adding screenshots, keep them in `screenshots/` and follow the existing naming convention `NN-description.png` so the README references remain accurate.

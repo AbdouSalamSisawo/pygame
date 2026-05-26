@@ -267,7 +267,9 @@ class GameScene(BaseScene):
                 continue
             if option["word"] in normalized:
                 self.selected_index = index
-                self.evaluate_choice(option["item"])
+                # `option` here is a vocab item (dict with keys like 'word', 'icon', 'color').
+                # Pass the vocab item directly to `evaluate_choice` (it expects the item).
+                self.evaluate_choice(option)
                 return
         self.set_voice_status("I didn't hear a game word. Try again.")
         if self.voice:
