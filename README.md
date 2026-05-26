@@ -170,3 +170,42 @@ Word Explorer is a compact, pedagogical game built with Python and Pygame to pra
 - Keep the `data/vocab.json` dataset curated and small for quick sessions.
 - Treat `data/progress.json` and any downloaded `vosk-model-*` directories as local-only artifacts; they are in `.gitignore` and should not be committed.
 - When adding screenshots, keep them in `screenshots/` and follow the existing naming convention `NN-description.png` so the README references remain accurate.
+
+---
+
+## Contributing & Roadmap
+This project is a teaching-focused prototype; contributions that improve reliability, testing, and voice interaction are especially welcome. Below are concrete, actionable improvements contributors can take on.
+
+1) Core quality and CI
+- Add a lightweight unit test suite for core logic (`ai/adaptive.py`, `gameplay/rounds.py`, and `storage/progress.py`). Use `pytest` and run tests in CI (GitHub Actions).
+- Add linting (`ruff`/`flake8`) and type checks (`mypy`) to the CI pipeline.
+- Add a simple GitHub Actions workflow that runs lint, tests, and a quick smoke test that imports the game modules.
+
+2) Voice assistant (priority)
+The voice assistant is useful but fragile; improving it will greatly increase the project polish. Suggested tasks:
+- Improve model handling: ensure the Vosk model is downloaded and validated before enabling voice input. Move download logic to an idempotent helper and expose a `--preload-voice-model` CLI or a Settings button.
+- Add robust error handling and user feedback: show explicit UI messages for missing dependencies, audio device errors, or model-corruption.
+- Add an integration test that records or replays a short WAV sample and runs through the `VoiceInput` pipeline to verify recognition end-to-end.
+- Add a fallback transcription option using other backends (configurable):
+    - Local Whisper (via `whisper` or `faster-whisper`) for higher accuracy on short phrases. Note: local Whisper is CPU/GPU intensive.
+    - Cloud STT (Google Cloud Speech-to-Text, Azure Speech, or OpenAI Whisper API) for a hosted option; wrap calls with retries and rate-limit handling.
+- Improve selection resilience: after recognition, map recognized text to option words using fuzzy matching (e.g., `difflib.SequenceMatcher` or `rapidfuzz`) to tolerate partial matches and small transcription errors.
+
+3) UX and debugging tools
+- Add a small debug overlay or log window that shows the latest STT partial/final results and Vosk status for troubleshooting (useful for contributors and QA).
+- Add a `--screenshot` or headless mode that can capture interface screenshots for automated visual tests.
+
+4) Packaging and distribution
+- Add `setuptools` packaging or a `pyproject.toml` to make the project installable for contributors: `pip install -e .`.
+- Pin `setuptools<81` in `requirements.txt` or CI to avoid the `pkg_resources` deprecation warning seen on some machines.
+
+5) Accessibility & localization
+- Improve accessibility: keyboard focus indicators, larger target areas, and color-contrast checks.
+- Externalize UI strings into a `strings.json` and offer a simple localization loader for other languages.
+
+How to prioritize
+- Short-term (1–2 days): add tests for `AdaptiveTracker`, add the Vosk model preloader, and fix the voice crash (already addressed).
+- Mid-term (1–2 weeks): CI workflow, fuzzy matching for voice, integration test for voice pipeline.
+- Longer-term: alternative STT backends (Whisper or cloud), packaging, and localization.
+
+If you'd like, I can scaffold a minimal GitHub Actions workflow that runs tests and linting and then open a PR with those files.
