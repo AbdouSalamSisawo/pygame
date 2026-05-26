@@ -4,9 +4,6 @@
 - **Institution:** School of Computing and Informatics, Albukhary International University
 - **Course Code:** CCC1243 Artificial Intelligence
 - **Project Type:** Group Project
-- **Weightage:** 15%
-- **Submission Date:** 25 June 2026 (via eLearning)
-- **Prepared by:** Mdm. Syaza Lyana Mahadzir
 
 ## Course Learning Outcome (CLO)
 Develop intelligent systems to solve computational problems (P5, PLO6).
