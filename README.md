@@ -111,22 +111,7 @@ The demo vocabulary is intentionally small and child-friendly.
 - The app is designed to fail gracefully when optional audio or microphone dependencies are missing.
 
 ## Known issues (for contributors)
-1) KeyError in choice evaluation
-
-Observed failure (example):
-```text
-self.evaluate_choice(option["item"])
-                         ~~~~~~^^^^^^^^
-KeyError: 'item'
-```
-What this means: some entries in the option layout are missing the expected `item` key when the game calls `evaluate_choice()`.
-Suggested steps to investigate and fix:
-- Reproduce the failure and add logging around `compute_option_layout()` and where `option_layout` is used to confirm each element's keys.
-- Check `gameplay/rounds.py` and `screens/game.py::compute_option_layout()` to ensure `item` is always added and not removed by later processing.
-- Guard `evaluate_choice()` with a safe lookup (e.g., `option.get('item')`) and log a detailed error rather than crashing.
-- Add unit tests that build round states with corner cases (zero options, eliminated indices) to prevent regressions.
-
-2) Voice assistant unreliable / not working
+1) Voice assistant unreliable / not working
 
 Symptoms: voice input may report "Voice input not installed" or fail during recognition; `VoiceManager` may show status messages but not deliver expected text to the game.
 Quick checks:
@@ -157,7 +142,7 @@ The repository includes example screenshots under the `screenshots/` folder. The
 - Settings: [screenshots/05-settings.png](screenshots/05-settings.png) — volume, voice toggles, voice volume, difficulty bias, and reset controls.
 - Session complete: [screenshots/06-session-complete.png](screenshots/06-session-complete.png) — end-of-session summary with Play Again / Return Home options.
 
-These images are intended for documentation only. If you publish this repository, avoid committing personal or large binary files beyond these illustrative screenshots.
+These images are intended for documentation only.
 
 ## Polished Overview (quick)
 Word Explorer is a compact, pedagogical game built with Python and Pygame to practice early vocabulary. It ships with a curated demo word set and simple adaptive logic that increases exposure to words the learner struggles with.
